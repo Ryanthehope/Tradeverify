@@ -5,18 +5,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          // Dark Blue - Primary color from Nigel (#311082)
-          50: "#f5f3ff",
-          100: "#ede9fe",
-          200: "#ddd6fe",
-          300: "#c4b5fd",
-          400: "#a78bfa",
-          500: "#8b5cf6",
-          600: "#311082", // Main brand color
-          700: "#280d6b",
-          800: "#1f0a54",
-          900: "#16073d",
-          950: "#0d0426",
+          // Dark Blue - Primary color from Nigel (#0C2389)
+          50: "#eff3ff",
+          100: "#dbe4ff",
+          200: "#bac8ff",
+          300: "#8ba5ff",
+          400: "#5a78ff",
+          500: "#3354ff",
+          600: "#0C2389", // Main brand color
+          700: "#0a1d6f",
+          800: "#081755",
+          900: "#06113b",
+          950: "#040b21",
         },
         accent: {
           // Green - Accent color from Nigel (#7AD801)
