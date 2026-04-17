@@ -22,7 +22,7 @@ export function GuidesIndex() {
         <button
           type="button"
           onClick={() => reload()}
-          className="mt-8 rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-400"
+          className="mt-8 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-500"
         >
           Retry
         </button>

@@ -122,7 +122,7 @@ export function StaffAnalytics() {
             href="https://analytics.google.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-400"
+            className="inline-flex rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500"
           >
             Open Google Analytics
           </a>

@@ -14,7 +14,7 @@ function Logo({
       <img 
         src="/logo.png" 
         alt={title}
-        className="h-10 w-auto"
+        className="h-14 w-auto"
       />
     </div>
   );
@@ -109,7 +109,7 @@ export function Layout() {
             </Link>
             <Link
               to="/join"
-              className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-900/35 transition-colors duration-200 hover:bg-brand-400"
+              className="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-900/35 transition-colors duration-200 hover:bg-brand-500"
             >
               Join Trader Watchdog
             </Link>
@@ -208,7 +208,7 @@ export function Layout() {
               </Link>
               <Link
                 to="/join"
-                className="mt-2 rounded-lg bg-brand-500 px-3 py-2.5 text-center font-semibold text-white"
+                className="mt-2 rounded-lg bg-brand-600 px-3 py-2.5 text-center font-semibold text-white hover:bg-brand-500"
                 onClick={() => setMenuOpen(false)}
               >
                 Join Trader Watchdog

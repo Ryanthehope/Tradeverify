@@ -59,7 +59,7 @@ export function VerifyForm({ id = "tv-verify", layout = "section" }: Props) {
         className={
           isHero
             ? "min-h-[52px] shrink-0 rounded-xl bg-white px-8 font-semibold text-ink-900 shadow-lg shadow-black/30 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
-            : "min-h-[52px] rounded-xl bg-brand-500 px-8 font-semibold text-white shadow-lg shadow-brand-900/40 transition-colors hover:bg-brand-400 disabled:cursor-not-allowed disabled:opacity-50"
+            : "min-h-[52px] rounded-xl bg-brand-600 px-8 font-semibold text-white shadow-lg shadow-brand-900/40 transition-colors hover:bg-brand-500 disabled:cursor-not-allowed disabled:opacity-50"
         }
       >
         {loading ? "Loading…" : "Check"}

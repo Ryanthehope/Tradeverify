@@ -588,7 +588,7 @@ export function Join() {
                         type="button"
                         disabled={checkoutLoading !== null}
                         onClick={() => startCheckout("member")}
-                        className="flex-1 rounded-xl bg-brand-500 py-3 text-sm font-semibold text-white hover:bg-brand-400 disabled:opacity-50"
+                        className="flex-1 rounded-xl bg-brand-600 py-3 text-sm font-semibold text-white hover:bg-brand-500 disabled:opacity-50"
                       >
                         {checkoutLoading === "member"
                           ? "Redirecting…"
@@ -744,7 +744,7 @@ export function Join() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-xl bg-brand-500 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 hover:bg-brand-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 hover:bg-brand-500 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitting ? "Submitting…" : "Submit application"}
             </button>

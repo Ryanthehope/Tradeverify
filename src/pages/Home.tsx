@@ -709,7 +709,7 @@ export function Home() {
             </Link>
             <Link
               to="/join"
-              className="inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-brand-600"
+              className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-brand-500"
             >
               Get verified as a tradesperson
             </Link>
