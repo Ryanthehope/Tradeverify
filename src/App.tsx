@@ -96,6 +96,13 @@ export default function App() {
           }
         >
           <Route index element={<StaffDashboard />} />
+          <Route path="financial" element={<div>Financial section coming soon</div>} />
+          <Route path="applications" element={<StaffApplications />} />
+          <Route path="members" element={<StaffMembers />} />
+          <Route path="insurance" element={<StaffInsurance />} />
+          <Route path="analytics" element={<StaffAnalytics />} />
+          <Route path="settings" element={<StaffSettingsPage />} />
+          <Route path="team" element={<div>Staff team section coming soon</div>} />
         </Route>
 
         <Route element={<Layout />}>
