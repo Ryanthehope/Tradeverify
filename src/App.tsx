@@ -82,7 +82,7 @@ export default function App() {
           <Route path="password" element={<MemberPassword />} />
           {/* Removed leads, reviews, quotes, invoices, jobs, availability routes */}
           {/* leads, reviews, quotes, invoices, jobs, availability removed */}
-          <Route path="guides/:id" element={<StaffGuideForm />} />
+          {/* Removed staff guides route */}
           <Route path="analytics" element={<StaffAnalytics />} />
           <Route path="settings" element={<StaffSettingsPage />} />
         </Route>
