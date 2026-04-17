@@ -10,28 +10,12 @@ function Logo({
   title?: string;
 }) {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <span
-        className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-white shadow-lg shadow-brand-900/40"
-        aria-hidden
-      >
-        <svg
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2.2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
-      </span>
-      <span className="font-display text-xl font-semibold tracking-tight text-white">
-        {title}
-      </span>
+    <div className={`flex items-center gap-3 ${className}`}>
+      <img 
+        src="/logo.jpg" 
+        alt={title}
+        className="h-10 w-auto"
+      />
     </div>
   );
 }

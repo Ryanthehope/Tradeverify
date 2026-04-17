@@ -253,53 +253,53 @@ function CompetitorComparison() {
   return (
     <section
       id="compare"
-      className="scroll-mt-24 border-b border-white/5 bg-ink-950/40 py-16 sm:py-20"
+      className="scroll-mt-24 border-b border-slate-200 bg-white py-16 sm:py-20"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-wider text-brand-300">
+        <p className="text-center text-sm font-semibold uppercase tracking-wider text-brand-600">
           Comparison
         </p>
-        <h2 className="mt-2 text-center font-display text-2xl font-semibold text-white sm:text-3xl">
+        <h2 className="mt-2 text-center font-display text-2xl font-semibold text-slate-900 sm:text-3xl">
           How we&apos;re different from lead directories
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-500">
+        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-700">
           Trader Watchdog is a verification service with public profiles. Lead
           marketplaces focus on connecting jobs — we focus on what&apos;s true
           before you connect. Competitor columns are a general guide; features
           vary by plan and change over time.
         </p>
 
-        <div className="mt-10 overflow-x-auto rounded-2xl border border-white/10 bg-ink-900/50">
+        <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-300/60 bg-slate-50">
           <table className="w-full min-w-[640px] border-collapse text-left text-sm">
             <thead>
-              <tr className="border-b border-white/10 bg-ink-950/80">
+              <tr className="border-b border-slate-300/60 bg-white">
                 <th
                   scope="col"
-                  className="px-4 py-4 font-medium text-slate-400 sm:px-6"
+                  className="px-4 py-4 font-medium text-slate-700 sm:px-6"
                 >
                   Feature
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-4 text-center font-display font-semibold text-brand-300 sm:px-6"
+                  className="px-4 py-4 text-center font-display font-semibold text-brand-600 sm:px-6"
                 >
                   Trader Watchdog
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-4 text-center font-medium text-slate-400 sm:px-6"
+                  className="px-4 py-4 text-center font-medium text-slate-700 sm:px-6"
                 >
                   Typical directory
-                  <span className="mt-1 block text-[10px] font-normal normal-case text-slate-500">
+                  <span className="mt-1 block text-[10px] font-normal normal-case text-slate-600">
                     e.g. Checkatrade
                   </span>
                 </th>
                 <th
                   scope="col"
-                  className="px-4 py-4 text-center font-medium text-slate-400 sm:px-6"
+                  className="px-4 py-4 text-center font-medium text-slate-700 sm:px-6"
                 >
                   Typical directory
-                  <span className="mt-1 block text-[10px] font-normal normal-case text-slate-500">
+                  <span className="mt-1 block text-[10px] font-normal normal-case text-slate-600">
                     e.g. MyBuilder
                   </span>
                 </th>
@@ -310,16 +310,16 @@ function CompetitorComparison() {
                 <tr
                   key={row.feature}
                   className={
-                    i % 2 === 0 ? "bg-ink-950/20" : "bg-ink-900/30"
+                    i % 2 === 0 ? "bg-white" : "bg-slate-50"
                   }
                 >
                   <th
                     scope="row"
-                    className="max-w-[220px] px-4 py-4 align-top font-medium text-slate-200 sm:px-6"
+                    className="max-w-[220px] px-4 py-4 align-top font-medium text-slate-900 sm:px-6"
                   >
                     {row.feature}
                     {row.detail ? (
-                      <span className="mt-1 block text-xs font-normal text-slate-500">
+                      <span className="mt-1 block text-xs font-normal text-slate-600">
                         {row.detail}
                       </span>
                     ) : null}
@@ -347,7 +347,7 @@ function MembersCarousel() {
   const { members, loading } = useSiteData();
 
   return (
-    <section className="border-b border-slate-200 bg-white py-20 sm:py-24">
+    <section className="border-b border-slate-200 bg-slate-50 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center font-display text-3xl font-bold text-slate-900 sm:text-4xl">
           Verified members
@@ -447,7 +447,7 @@ function Pillars() {
     },
   ];
   return (
-    <section id="why" className="scroll-mt-24 border-b border-slate-200 bg-slate-50 py-20 sm:py-28">
+    <section id="why" className="scroll-mt-24 border-b border-slate-200 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-center text-sm font-semibold uppercase tracking-wider text-brand-600">
           What We Verify For You
@@ -462,7 +462,7 @@ function Pillars() {
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="flex gap-5 rounded-lg border border-slate-300/60 bg-white p-8 transition-all duration-200 hover:border-brand-500/50 hover:shadow-sm"
+              className="flex gap-5 rounded-lg border border-slate-300/60 bg-slate-50 p-8 transition-all duration-200 hover:border-brand-500/50 hover:shadow-sm"
             >
               <span
                 className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-600"
@@ -505,7 +505,7 @@ const faqItems = [
 
 function Faq() {
   return (
-    <section id="faq" className="border-y border-slate-200 bg-white py-20 sm:py-24">
+    <section id="faq" className="border-y border-slate-200 bg-slate-50 py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 className="text-center font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
           Common questions
@@ -514,7 +514,7 @@ function Faq() {
           {faqItems.map((item) => (
             <div
               key={item.q}
-              className="rounded-lg border border-slate-300/60 bg-slate-50 px-6 py-6 transition-all duration-200 hover:border-brand-500/50 hover:shadow-sm"
+              className="rounded-lg border border-slate-300/60 bg-white px-6 py-6 transition-all duration-200 hover:border-brand-500/50 hover:shadow-sm"
             >
               <dt className="font-semibold text-slate-900">{item.q}</dt>
               <dd className="mt-3 text-sm leading-relaxed text-slate-700">
@@ -579,7 +579,7 @@ function GuidesTeaser() {
 
 function TradesCta() {
   return (
-    <section id="join" className="border-t border-slate-200 bg-slate-50 py-20 sm:py-28">
+    <section id="join" className="border-t border-slate-200 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="overflow-hidden rounded-xl border border-slate-300/60 bg-white p-10 sm:p-14">
           <div className="text-center">
@@ -596,7 +596,7 @@ function TradesCta() {
               Independent verification improves customers' confidence and increases conversions.
             </p>
 
-            <div className="mx-auto mt-12 max-w-2xl rounded-lg border border-slate-300/60 bg-slate-50 p-8 text-left">
+            <div className="mx-auto mt-12 max-w-2xl rounded-lg border border-slate-300/60 bg-slate-50/50 p-8 text-left">
               <h3 className="mb-6 text-center font-display text-xl font-semibold text-slate-900">
                 Registration Requirements
               </h3>
@@ -760,6 +760,7 @@ export function Home() {
         </div>
       </section>
 
+      <CompetitorComparison />
       <MembersCarousel />
       <HowItWorks />
       <Pillars />

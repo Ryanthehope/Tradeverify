@@ -5,17 +5,32 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
-          950: "#082f49",
+          // Dark Blue - Primary color from Nigel (#311082)
+          50: "#f5f3ff",
+          100: "#ede9fe",
+          200: "#ddd6fe",
+          300: "#c4b5fd",
+          400: "#a78bfa",
+          500: "#8b5cf6",
+          600: "#311082", // Main brand color
+          700: "#280d6b",
+          800: "#1f0a54",
+          900: "#16073d",
+          950: "#0d0426",
+        },
+        accent: {
+          // Green - Accent color from Nigel (#7AD801)
+          50: "#f7fee7",
+          100: "#ecfccb",
+          200: "#d9f99d",
+          300: "#bef264",
+          400: "#a3e635",
+          500: "#7AD801", // Main accent color
+          600: "#65b801",
+          700: "#4d8b01",
+          800: "#3d6e01",
+          900: "#2e5201",
+          950: "#1f3601",
         },
         ink: {
           50: "#f8fafc",
