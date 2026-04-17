@@ -21,40 +21,19 @@ import { StaffMemberForm } from "./staff/StaffMemberForm";
 import { StaffMembers } from "./staff/StaffMembers";
 import { StaffAnalytics } from "./staff/StaffAnalytics";
 import { StaffApplications } from "./staff/StaffApplications";
-import { StaffDispatch } from "./staff/StaffDispatch";
-import { StaffFinancial } from "./staff/StaffFinancial";
-import { StaffReviews } from "./staff/StaffReviews";
-import { StaffInbox } from "./staff/StaffInbox";
-import { StaffLeads } from "./staff/StaffLeads";
 import { StaffInsurance } from "./staff/StaffInsurance";
 import { StaffRequireAuth } from "./staff/StaffRequireAuth";
 import { StaffSettingsPage } from "./staff/StaffSettingsPage";
-import { StaffIntegrations } from "./staff/StaffIntegrations";
-import { StaffSystem } from "./staff/StaffSystem";
-import { StaffTeam } from "./staff/StaffTeam";
-import {
-  MemberAuthProvider,
-  MemberAvailability,
-  MemberBadge,
+import {  MemberAuthProvider,
   MemberBilling,
   MemberBusiness,
   MemberDocuments,
   MemberInsurance,
-  MemberJobs,
   MemberLayout,
-  MemberLeads,
   MemberLogin,
-  MemberMembership,
   MemberOverview,
   MemberPassword,
-  MemberInvoicePrint,
-  MemberQuotePrint,
-  MemberQuotes,
-  MemberQuotesInvoicesShell,
-  MemberRefer,
   MemberRequireAuth,
-  MemberReviews,
-  MemberTradeInvoices,
 } from "./member";
 
 function MemberRedirectQuotes() {
@@ -98,9 +77,7 @@ export default function App() {
           <Route path="business" element={<MemberBusiness />} />
           <Route path="documents" element={<MemberDocuments />} />
           <Route path="insurance" element={<MemberInsurance />} />
-          <Route path="badge" element={<MemberBadge />} />
-          <Route path="refer" element={<MemberRefer />} />
-          <Route path="membership" element={<MemberMembership />} />
+          {/* badge, refer, membership removed */}
           <Route path="billing" element={<MemberBilling />} />
           <Route path="password" element={<MemberPassword />} />
           <Route path="leads" element={<MemberLeads />} />
@@ -128,32 +105,7 @@ export default function App() {
             path="trade-invoices/:id/print"
             element={<MemberRedirectInvoicePrint />}
           />
-          <Route path="jobs" element={<MemberJobs />} />
-          <Route path="availability" element={<MemberAvailability />} />
-        </Route>
-
-        <Route path="staff/login" element={<StaffLogin />} />
-        <Route
-          path="staff"
-          element={
-            <StaffRequireAuth>
-              <StaffLayout />
-            </StaffRequireAuth>
-          }
-        >
-          <Route index element={<StaffDashboard />} />
-          <Route path="financial" element={<StaffFinancial />} />
-          <Route path="outreach/leads" element={<StaffLeads />} />
-          <Route path="outreach/inbox" element={<StaffInbox />} />
-          <Route path="applications" element={<StaffApplications />} />
-          <Route path="members" element={<StaffMembers />} />
-          <Route path="members/new" element={<StaffMemberForm />} />
-          <Route path="members/:id" element={<StaffMemberForm />} />
-          <Route path="insurance" element={<StaffInsurance />} />
-          <Route path="dispatch" element={<StaffDispatch />} />
-          <Route path="reviews" element={<StaffReviews />} />
-          <Route path="guides" element={<StaffGuides />} />
-          <Route path="guides/new" element={<StaffGuideForm />} />
+          {/* leads, reviews, quotes, invoices, jobs, availability removed */}
           <Route path="guides/:id" element={<StaffGuideForm />} />
           <Route path="analytics" element={<StaffAnalytics />} />
           <Route path="team" element={<StaffTeam />} />
