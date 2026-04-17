@@ -28,7 +28,7 @@
 - Displays verified traders in a public-facing directory
 
 **Client:** Nigel  
-**Budget:** £2,300  
+**Budget:** £2,500  
 **Deadline:** End of May 2026  
 **Brand Name:** Trader Watchdog 🐕
 
@@ -1799,7 +1799,7 @@ Authorization: Bearer dev-secret-123
 - ⏹️ Production testing
 - ⏹️ Client training/handoff
 
-**Budget Status:** ~£1,900 of £2,300 used (83%)  
+**Budget Status:** ~£1,900 of £2,500 used (76%)  
 **Timeline:** On track for end of May 2026 deadline  
 **Next Step:** Deploy to Vercel for live testing
 

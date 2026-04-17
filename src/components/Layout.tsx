@@ -12,7 +12,7 @@ function Logo({
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <img 
-        src="/logo.jpg" 
+        src="/logo.png" 
         alt={title}
         className="h-10 w-auto"
       />
