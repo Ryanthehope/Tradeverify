@@ -114,22 +114,7 @@ export function StaffLayout() {
               Financial
             </NavLink>
 
-            <NavGroup label="Outreach" />
-            <NavLink to="/staff/outreach/leads" className={navClass} onClick={closeNav}>
-              Leads
-            </NavLink>
-            <NavLink to="/staff/outreach/inbox" className={navClass} onClick={closeNav}>
-              <span>Inbox</span>
-              <span
-                className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-                  inboxUnread && inboxUnread > 0
-                    ? "bg-brand-500/30 text-brand-200"
-                    : "bg-white/10 text-slate-400"
-                }`}
-              >
-                {inboxUnread === null ? "—" : inboxUnread}
-              </span>
-            </NavLink>
+            {/* Outreach links removed */}
 
             <NavGroup label="Members" />
             <NavLink to="/staff/applications" className={navClass} onClick={closeNav}>
@@ -141,17 +126,8 @@ export function StaffLayout() {
             <NavLink to="/staff/insurance" className={navClass} onClick={closeNav}>
               Insurance
             </NavLink>
-            <NavLink to="/staff/reviews" className={navClass} onClick={closeNav}>
-              Reviews
-            </NavLink>
-            <NavLink to="/staff/dispatch" className={navClass} onClick={closeNav}>
-              Dispatch
-            </NavLink>
 
             <NavGroup label="Content" />
-            <NavLink to="/staff/guides" className={navClass} onClick={closeNav}>
-              Articles
-            </NavLink>
             <NavLink to="/staff/analytics" className={navClass} onClick={closeNav}>
               Analytics
             </NavLink>
@@ -160,15 +136,10 @@ export function StaffLayout() {
             <NavLink to="/staff/team" className={navClass} onClick={closeNav}>
               Staff
             </NavLink>
-            <NavLink to="/staff/integrations" className={navClass} onClick={closeNav}>
-              Integrations
-            </NavLink>
             <NavLink to="/staff/settings" className={navClass} onClick={closeNav}>
               Settings
             </NavLink>
-            <NavLink to="/staff/system" className={navClass} onClick={closeNav}>
-              System
-            </NavLink>
+            {/* Integrations and System links removed */}
           </div>
         </nav>
 

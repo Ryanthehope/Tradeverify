@@ -225,15 +225,6 @@ export function MemberLayout() {
               >
                 Badge
               </NavLink>
-              <NavLink
-                to="/member/reviews"
-                onClick={() => setMobileNavOpen(false)}
-                className={({ isActive }) =>
-                  `${nav} ${isActive ? "bg-slate-100 text-slate-900" : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"}`
-                }
-              >
-                Reviews
-              </NavLink>
             </>
           )}
         </nav>
@@ -254,15 +245,6 @@ export function MemberLayout() {
                 }
               >
                 Membership
-              </NavLink>
-              <NavLink
-                to="/member/billing"
-                onClick={() => setMobileNavOpen(false)}
-                className={({ isActive }) =>
-                  `${nav} ${isActive ? "bg-slate-100 text-slate-900" : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"}`
-                }
-              >
-                Billing & invoices
               </NavLink>
             </>
           ) : null}
