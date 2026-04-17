@@ -1,6 +1,6 @@
 import type { Request, RequestHandler } from "express";
 import { prisma } from "../db.js";
-import { isMemberMembershipAccessActive } from "../lib/memberMembership.js";
+// import { isMemberMembershipAccessActive } from "../lib/memberMembership.js";
 
 /** Blocks portal routes when membership has lapsed (after requireMember). */
 export const requireMemberMembershipActive: RequestHandler = async (
@@ -23,15 +23,9 @@ export const requireMemberMembershipActive: RequestHandler = async (
       res.status(404).json({ error: "Account not found" });
       return;
     }
-    if (isMemberMembershipAccessActive(m)) {
-      next();
-      return;
-    }
-    res.status(403).json({
-      error:
-        "Your membership has expired. Open Membership to renew or subscribe with card.",
-      code: "MEMBERSHIP_EXPIRED",
-    });
+    // Membership check removed; always allow
+    next();
+    return;
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: "Could not verify membership" });

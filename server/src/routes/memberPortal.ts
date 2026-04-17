@@ -14,13 +14,10 @@ import {
 import { documentIssuerFromMember } from "../lib/documentIssuer.js";
 import { memberProfileLogoFilePath, memberProfileLogoDir } from "../lib/memberProfileLogoPaths.js";
 import { memberToPublic } from "../lib/memberSerialize.js";
-import {
-  isMemberPublicListingVisible,
-  membershipSummaryForMember,
-} from "../lib/memberMembership.js";
+// import { isMemberPublicListingVisible, membershipSummaryForMember } from "../lib/memberMembership.js";
 import { requireMember } from "../middleware/requireMember.js";
 import { requireMemberMembershipActive } from "../middleware/requireMemberMembershipActive.js";
-import memberCrmRoutes from "./memberCrmRoutes.js";
+// import memberCrmRoutes from "./memberCrmRoutes.js";
 
 const UPLOAD_ROOT =
   process.env.MEMBER_UPLOAD_DIR?.trim() ||
@@ -704,6 +701,6 @@ router.get("/insurance", requireMemberMembershipActive, async (req, res) => {
   }
 });
 
-router.use(memberCrmRoutes);
+// router.use(memberCrmRoutes);
 
 export default router;

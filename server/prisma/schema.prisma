@@ -74,16 +74,9 @@ model Member {
   membershipUnlimited   Boolean @default(false)
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
-  dispatchTasks DispatchTask[]
   documents     MemberDocument[]
   /// Filled when this profile was auto-created from an approved application.
   sourceApplication Application? @relation("MemberFromApprovedApplication")
-  reviews       MemberReview[]
-  leads         Lead[]
-  memberQuotes  MemberQuote[]
-  tradeInvoices MemberTradeInvoice[]
-  memberJobs    MemberJob[]
-  availabilityDays MemberAvailabilityDay[]
   insurancePolicies Insurance[]
 }
 
@@ -119,47 +112,12 @@ model Insurance {
   @@index([expiryDate])
 }
 
-/// Calendar marks for public profile (available vs busy).
-model MemberAvailabilityDay {
-  id        String   @id @default(cuid())
-  memberId  String
-  member    Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
-  /// YYYY-MM-DD (local business day).
-  date      String
-  /// "available" | "busy"
-  status    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([memberId, date])
-  @@index([memberId])
-}
-
 enum ReviewStatus {
   PENDING
   APPROVED
   REJECTED
 }
 
-model MemberReview {
-  id           String       @id @default(cuid())
-  memberId     String
-  member       Member       @relation(fields: [memberId], references: [id], onDelete: Cascade)
-  rating       Int
-  title        String?
-  body         String
-  authorName   String
-  authorEmail  String?
-  status       ReviewStatus @default(PENDING)
-  /// Public reply from the verified business (member portal).
-  businessReply   String?
-  businessRepliedAt DateTime?
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-
-  @@index([memberId])
-  @@index([status])
-}
 
 model MemberDocument {
   id           String   @id @default(cuid())
@@ -222,143 +180,6 @@ model ApplicationDocument {
   createdAt      DateTime    @default(now())
 
   @@index([applicationId])
-}
-
-model Lead {
-  id        String   @id @default(cuid())
-  name      String
-  email     String?
-  phone     String?
-  source    String   @default("manual")
-  status    String   @default("NEW")
-  notes     String?
-  /// From public \"post a job\" form (optional).
-  jobTitle       String?
-  jobDescription String?
-  jobPostcode    String?
-  /// Inquiry directed at a specific verified member (public profile contact form).
-  memberId  String?
-  member    Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
-  /// Slug from /post-job trade selector (e.g. it, electrical) when source is job_post.
-  jobTradeCategory String?
-  /// Same id on all leads created from one posted job (staff row + per-trade copies).
-  jobPostBatchId   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  memberJobs MemberJob[]
-
-  @@index([memberId])
-  @@index([jobPostBatchId])
-}
-
-/// Quote issued by a member to a homeowner (CRM — not Stripe subscription billing).
-model MemberQuote {
-  id             String   @id @default(cuid())
-  memberId       String
-  member         Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
-  reference      String
-  customerName   String
-  /// Bill-to address (UK invoicing / quotes — customer name also stored separately).
-  customerAddress String  @default("")
-  customerEmail  String?
-  customerPhone  String?
-  title          String
-  lineItems      Json
-  subtotalPence  Int
-  vatPence       Int      @default(0)
-  totalPence     Int
-  status         String   @default("draft")
-  notes          String?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  @@index([memberId])
-}
-
-/// Invoice to a customer (trade-issued document — not Stripe platform invoice).
-model MemberTradeInvoice {
-  id             String   @id @default(cuid())
-  memberId       String
-  member         Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
-  reference      String
-  customerName   String
-  customerAddress String  @default("")
-  customerEmail  String?
-  customerPhone  String?
-  lineItems      Json
-  subtotalPence  Int
-  vatPence       Int      @default(0)
-  totalPence     Int
-  status         String   @default("unpaid")
-  dueDate        DateTime?
-  paidAt         DateTime?
-  quoteId        String?
-  notes          String?
-  /// How the customer should pay (e.g. bank transfer, card).
-  paymentMethod  String?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  @@index([memberId])
-}
-
-model MemberJob {
-  id          String   @id @default(cuid())
-  memberId    String
-  member      Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
-  title       String
-  description String?
-  status      String   @default("open")
-  leadId      String?
-  lead        Lead?    @relation(fields: [leadId], references: [id], onDelete: SetNull)
-  quoteId     String?
-  scheduledAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([memberId])
-  @@index([leadId])
-}
-
-model InboxMessage {
-  id        String   @id @default(cuid())
-  subject   String
-  body      String
-  fromEmail String?
-  fromName  String?
-  read      Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model AiPrompt {
-  id        String   @id @default(cuid())
-  title     String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model PlannerEvent {
-  id        String   @id @default(cuid())
-  title     String
-  eventDate DateTime
-  notes     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model DispatchTask {
-  id          String    @id @default(cuid())
-  title       String
-  status      String    @default("PENDING")
-  notes       String?
-  memberId    String?
-  scheduledAt DateTime?
-  member      Member?   @relation(fields: [memberId], references: [id], onDelete: SetNull)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
 }
 
 model OrganizationSettings {

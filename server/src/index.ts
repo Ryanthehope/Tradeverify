@@ -24,7 +24,7 @@ import insuranceRouter from "./routes/insurance.js";
 import cronRouter from "./routes/cron.js";
 import { stripeWebhookHandler } from "./routes/stripeWebhook.js";
 import { prisma } from "./db.js";
-import { deleteMembersExpiredBeyondGrace } from "./lib/memberMembership.js";
+// import { deleteMembersExpiredBeyondGrace } from "./lib/memberMembership.js";
 
 
 const rootDir = path.join(bootDir, "..", "..");
@@ -114,30 +114,8 @@ const onListen = () => {
   if (fs.existsSync(distDir)) {
     console.log(`[tradeverify] Serving SPA from ${distDir}`);
   }
-  void (async () => {
-    try {
-      const n = await deleteMembersExpiredBeyondGrace(prisma, 30);
-      if (n > 0) {
-        console.log(
-          `[tradeverify] removed ${n} member profile(s) expired past 30-day grace`
-        );
-      }
-    } catch (e) {
-      console.error("[tradeverify] deleteMembersExpiredBeyondGrace failed", e);
-    }
-  })();
-  setInterval(
-    () => {
-      void deleteMembersExpiredBeyondGrace(prisma, 30).then((n) => {
-        if (n > 0) {
-          console.log(
-            `[tradeverify] removed ${n} member profile(s) expired past 30-day grace`
-          );
-        }
-      });
-    },
-    24 * 60 * 60 * 1000
-  );
+  // Removed: deleteMembersExpiredBeyondGrace cleanup logic
+  // Removed: periodic deleteMembersExpiredBeyondGrace cleanup
 };
 
 if (useTls) {
