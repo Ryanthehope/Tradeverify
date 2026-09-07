@@ -2,11 +2,11 @@ import { prisma } from "../db.js";
 import { getLaunchWindow } from "./launchWindow.js";
 const MIN_CHECKOUT_PENCE = 100; // £1.00 minimum checkout amount
 const MAX_CHECKOUT_PENCE = 999_999_99;
-const DEFAULT_ANNUAL_MEMBERSHIP_PENCE = 9_000; // £75 + VAT = £90 gross
+const DEFAULT_ANNUAL_MEMBERSHIP_PENCE = 9_000;
 const DEFAULT_REGISTRATION_FEE_PENCE = 1_800;
 
-function ensureVatMention(label: string) {
-  return /vat/i.test(label) ? label : `${label} + VAT`;
+function removeVatSuffix(label: string) {
+  return label.replace(/\s*\+\s*VAT\b/gi, "").trim();
 }
 
 function defaultAnnualMembershipPence(value: number) {
@@ -57,10 +57,10 @@ export function checkoutLineConfig(s: BillingRow) {
     registrationFeePence: clampCheckoutPence(
       s.checkoutRegistrationFeePence ?? DEFAULT_REGISTRATION_FEE_PENCE
     ),
-    membershipName: ensureVatMention(
+    membershipName: removeVatSuffix(
       s.checkoutMembershipName?.trim() || "Trader Watchdog annual portal fee"
     ),
-    registrationFeeName: ensureVatMention(
+    registrationFeeName: removeVatSuffix(
       s.checkoutRegistrationFeeName?.trim() ||
         "Trader Watchdog registration and admin checks"
     ),

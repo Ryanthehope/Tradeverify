@@ -43,9 +43,6 @@ const desktopLoginClass =
 const mobileLinkClass =
   "rounded-lg px-3 py-2.5 hover:bg-white/5 hover:text-white";
 
-const supportPhoneLabel = "01295 982166";
-const supportPhoneHref = "tel:01295982166";
-
 export function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { error, reload, brandName } = useSiteData();
@@ -87,12 +84,6 @@ export function Layout() {
               <Link to="/member/login" className={desktopLoginClass}>
                 Trader log in
               </Link>
-              <a
-                href={supportPhoneHref}
-                className="pr-1 text-sm font-semibold text-white/90 transition-colors duration-200 hover:text-white"
-              >
-                Telephone: {supportPhoneLabel}
-              </a>
             </div>
 
             <button
@@ -200,13 +191,6 @@ export function Layout() {
               >
                 Trader log in
               </Link>
-              <a
-                href={supportPhoneHref}
-                className="rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-center text-white transition-colors hover:bg-white/10"
-                onClick={() => setMenuOpen(false)}
-              >
-                Call {supportPhoneLabel}
-              </a>
             </nav>
           </div>
         ) : null}
@@ -321,7 +305,6 @@ export function Layout() {
               Trader Watchdog Ltd. Company number 17173750 registered in England and Wales.
             </p>
             <p>Registered office: 4th Floor Office, 205 Regent Street, London, W1B 4HB</p>
-            <p>VAT number: 518 4466 75</p>
             <p>ICO registration: ZC158586</p>
             <p>
               Email:{" "}

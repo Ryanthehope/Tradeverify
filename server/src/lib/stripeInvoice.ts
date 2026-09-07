@@ -25,7 +25,6 @@ async function loadInvoiceBranding() {
     select: {
       brandingLogoStoredName: true,
       invoiceLegalName: true,
-      invoiceVatNumber: true,
       invoiceAddress: true,
       invoiceFooterNote: true,
     },
@@ -132,9 +131,6 @@ async function createCustomReceiptPdf(
           .map((part) => part.trim())
           .filter(Boolean)
       : []),
-    invoiceBranding?.invoiceVatNumber?.trim()
-      ? `VAT registration number: ${invoiceBranding.invoiceVatNumber.trim()}`
-      : null,
   ].filter(Boolean) as string[];
   const receivedFromLines = [
     payload.receivedFromName?.trim() || null,

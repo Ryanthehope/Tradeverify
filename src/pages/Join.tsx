@@ -73,7 +73,7 @@ const benefitPoints = [
   },
   {
     number: 6,
-    title: "All For a one-off Registration Fee of £15 + VAT and an Annual Portal Fee of £75 + VAT",
+    title: "All for a one-off registration fee and an annual portal fee",
     body: "Payment activated when your credentials are validated and your application is accepted.",
   },
 ];
@@ -241,10 +241,6 @@ const traderFaqItems: FaqItem[] = [
     q: "Why should I register when I already belong to a trader register?",
     a: " Trader Watchdog provides customers with the easy option, just a one click solution. In your portal you have a window to describe your business and place links to your website or social media as well as other websites or associations where your business is registered."
   },
-  {
-    q: "Will I receive a VAT invoice?",
-    a: "Yes, you will automatically receive a VAT receipt by email from Stripe after payment, and this serves as your VAT invoice for your records."
-  }
 ];
 
 export function Join() {
@@ -757,10 +753,10 @@ export function Join() {
       setAppliedDiscountCode(validated.code);
       setDiscountQuote(validated.quote);
       const regLabel =
-        formatVatExclusiveLabel(validated.quote.registrationFinalPricePence) ??
+        formatPriceLabel(validated.quote.registrationFinalPricePence) ??
         formatSterling(validated.quote.registrationFinalPricePence);
       const memberLabel =
-        formatVatExclusiveLabel(validated.quote.membershipFinalPricePence) ??
+        formatPriceLabel(validated.quote.membershipFinalPricePence) ??
         formatSterling(validated.quote.membershipFinalPricePence);
       setDiscountSuccess(
         `Code applied. Approved applications pay ${regLabel} registration fee and ${memberLabel} annual portal fee together.`
@@ -808,10 +804,10 @@ export function Join() {
           setAppliedDiscountCode(validated.code);
           setDiscountQuote(validated.quote);
           const regLabel =
-            formatVatExclusiveLabel(validated.quote.registrationFinalPricePence) ??
+            formatPriceLabel(validated.quote.registrationFinalPricePence) ??
             formatSterling(validated.quote.registrationFinalPricePence);
           const memberLabel =
-            formatVatExclusiveLabel(validated.quote.membershipFinalPricePence) ??
+            formatPriceLabel(validated.quote.membershipFinalPricePence) ??
             formatSterling(validated.quote.membershipFinalPricePence);
           setDiscountSuccess(
             `Code applied. Approved applications pay ${regLabel} registration fee and ${memberLabel} annual portal fee together.`
@@ -913,24 +909,23 @@ export function Join() {
     return Number.isInteger(pounds) ? `£${pounds}` : `£${pounds.toFixed(2)}`;
   };
 
-  const formatVatExclusiveLabel = (grossPence: number | null) => {
+  const formatPriceLabel = (grossPence: number | null) => {
     if (grossPence == null) return null;
-    const exVatPence = Math.round((grossPence * 100) / 120);
-    return `${formatSterling(exVatPence)} + VAT`;
+    return formatSterling(grossPence);
   };
 
   const registrationFeePriceLabel =
-    formatVatExclusiveLabel(registrationFeePricePence) ?? "£15 + VAT";
+    formatPriceLabel(registrationFeePricePence) ?? "£18";
   const membershipPriceLabel =
-    formatVatExclusiveLabel(baseMembershipPricePence ?? membershipPricePence) ?? "£75 + VAT";
+    formatPriceLabel(baseMembershipPricePence ?? membershipPricePence) ?? "£90";
   const checkoutRegistrationFeePriceLabel =
     discountApplied && discountQuote
-      ? formatVatExclusiveLabel(discountQuote.registrationFinalPricePence) ??
+      ? formatPriceLabel(discountQuote.registrationFinalPricePence) ??
         formatSterling(discountQuote.registrationFinalPricePence)
       : registrationFeePriceLabel;
   const checkoutMembershipPriceLabel =
     discountApplied && discountQuote
-      ? formatVatExclusiveLabel(discountQuote.membershipFinalPricePence) ??
+      ? formatPriceLabel(discountQuote.membershipFinalPricePence) ??
         formatSterling(discountQuote.membershipFinalPricePence)
       : membershipPriceLabel;
   const renderDiscountCodeBox = () => (
