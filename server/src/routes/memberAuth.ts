@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import rateLimit from "express-rate-limit";
 import { prisma } from "../db.js";
 import { publicSiteBase, sendPasswordResetEmail } from "../lib/adminMail.js";
-import { getJwtSecret } from "../lib/jwtsecret.js";
+import { getJwtSecret } from "../lib/jwtSecret.js";
 
 const router = Router();
 

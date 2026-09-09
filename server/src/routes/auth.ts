@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { verifySync } from "otplib";
 import { prisma } from "../db.js";
 import rateLimit from "express-rate-limit";
-import { getJwtSecret } from "../lib/jwtsecret.js";
+import { getJwtSecret } from "../lib/jwtSecret.js";
 
 const router = Router();
 
