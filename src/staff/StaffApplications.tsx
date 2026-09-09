@@ -575,7 +575,7 @@ function ApplicationCard({
     }
     const label =
       type === "registration_fee"
-        ? "registration fee (£15 + VAT) for admin checks was received outside Stripe"
+        ? "registration fee (£15, no VAT) for admin checks was received outside Stripe"
         : `membership payment was recorded outside Stripe (until ${membershipExpiresAt})`;
     if (
       !confirm(
@@ -1153,7 +1153,7 @@ function ApplicationCard({
                 onClick={() => void resendReceipt()}
                 className="rounded-xl border border-sky-500/35 bg-sky-500/10 px-3.5 py-2.5 text-sm font-medium text-sky-100/95 transition hover:bg-sky-500/16 disabled:opacity-50"
               >
-                {receiptBusy ? "Sending…" : "Re-send VAT receipt"}
+                {receiptBusy ? "Sending…" : "Re-send payment receipt"}
               </button>
             ) : null}
             {registrationInvoiceReady ? (

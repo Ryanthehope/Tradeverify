@@ -219,9 +219,7 @@ router.get("/public-config", async (_req, res) => {
     const s = await getPublicOrgRuntimeConfig();
     const stripeOk = await safeStripeReady();
     const lines = checkoutLineConfig(s);
-    const baseMembershipPence = clampCheckoutPence(
-      s.checkoutMembershipPence ?? lines.membershipPence
-    );
+    const baseMembershipPence = lines.membershipPence;
 
     res.json({
       recaptchaSiteKey:

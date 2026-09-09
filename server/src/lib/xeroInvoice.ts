@@ -17,7 +17,7 @@ export type XeroInvoicePayload = {
     contactAddress?: string | null;
     contactPostalCode?: string | null;
     description: string;         // e.g. "Annual Portal Fee" or "Registration Fee"
-    amountPence: number;        // amount in pence, e.g. 1999 for £19.99 inc VAT if applicable
+    amountPence: number;        // amount in pence, with no VAT charged
   reference: string;          // e.g. Stripe payment or invoice reference
     paidAt: Date;               //when payment was confirmed
 };
@@ -116,16 +116,15 @@ export async function createPaidXeroInvoice(payload: XeroInvoicePayload): Promis
             return null;
     }
 
-    const amountGross = payload.amountPence / 100;
-    const amountNet = Number((payload.amountPence / 120).toFixed(2));
+    const amount = payload.amountPence / 100;
 
     const contact = await resolveInvoiceContact(tenantId, payload);
 
     const lineItem: LineItem = {
       description: payload.description,
       quantity: 1.0,
-      unitAmount: amountNet,
-      taxType: "OUTPUT2", 
+      unitAmount: amount,
+      taxType: "NONE",
       accountCode: "200", // default Xero sales account — Nigel can adjust in Xero
     };
 
@@ -155,7 +154,7 @@ export async function createPaidXeroInvoice(payload: XeroInvoicePayload): Promis
       invoice: { invoiceID: invoiceId },
       account: { code: "090" }, // default Xero bank account — Nigel can adjust
       date: payload.paidAt.toISOString().split("T")[0],
-      amount: amountGross,
+      amount,
     };
 
     try {
@@ -178,7 +177,7 @@ export type XeroCreditNotePayload = {
     contactName: string;        // traders company name
     contactEmail: string;       // traders email
     description: string;         // e.g. "Refund for Annual Portal Fee"
-    amountPence: number;        // amount in pence, e.g. 1999 for £19.99 inc VAT if applicable
+    amountPence: number;        // amount in pence, with no VAT charged
   reference: string;          // e.g. Stripe payment or invoice reference
     refundedAt: Date;           // when refund was issued
   };
@@ -195,8 +194,7 @@ export async function createXeroCreditNote(payload: XeroCreditNotePayload): Prom
         console.warn("[xero] No tenant ID stored — skipping credit note creation");
         return;
       }
-      const amountGross = payload.amountPence / 100;
-      const amountNet = Number((payload.amountPence / 120).toFixed(2));
+      const amount = payload.amountPence / 100;
 
       let contactId: string | undefined;
       if (payload.contactEmail) {
@@ -220,8 +218,8 @@ export async function createXeroCreditNote(payload: XeroCreditNotePayload): Prom
         lineItems: [{
           description: `Refund: ${payload.description}`,
           quantity: 1.0,
-          unitAmount: amountNet,
-          taxType: "OUTPUT2",
+          unitAmount: amount,
+          taxType: "NONE",
           accountCode: "200",
         }],
       };

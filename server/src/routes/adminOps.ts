@@ -359,8 +359,11 @@ router.get("/dashboard", async (_req, res) => {
 });
 
 function publicOrgSettings(s: Awaited<ReturnType<typeof ensureOrgSettings>>) {
+  const lines = checkoutLineConfig(s);
   return {
     ...s,
+    checkoutMembershipPence: lines.membershipPence,
+    checkoutRegistrationFeePence: lines.registrationFeePence,
     stripeSecretKey: null as string | null,
     stripeWebhookSecret: null as string | null,
     recaptchaSecretKey: null as string | null,

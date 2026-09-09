@@ -331,7 +331,7 @@ router.post("/checkout-membership", async (req, res) => {
       (membershipDiscount?.finalPricePence ?? lines.membershipPence);
     const paymentDescription = application.registrationFeePaidAt
       ? lines.membershipName
-      : "Trader Watchdog registration fee and first annual portal fee + VAT";
+      : "Trader Watchdog registration fee and first annual portal fee";
 
     const flow = await createStripeCheckoutSession(stripe, {
       amountPence: combinedAmountPence,

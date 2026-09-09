@@ -103,9 +103,9 @@ export function StaffSettingsPage() {
         setStripeWebhookSecret("");
         setCheckoutMembershipName(s.checkoutMembershipName ?? "");
         setCheckoutRegistrationFeeName(s.checkoutRegistrationFeeName ?? "");
-        setCheckoutMembershipPence(String(s.checkoutMembershipPence ?? 9000));
+        setCheckoutMembershipPence(String(s.checkoutMembershipPence ?? 8000));
         setCheckoutRegistrationFeePence(
-          String(s.checkoutRegistrationFeePence ?? 1800)
+          String(s.checkoutRegistrationFeePence ?? 1500)
         );
         setInvoiceLegalName(s.invoiceLegalName ?? "");
         setInvoiceVatNumber(s.invoiceVatNumber ?? "");
@@ -167,7 +167,7 @@ export function StaffSettingsPage() {
         : NaN;
       body.checkoutMembershipPence = Number.isFinite(membershipPenceNum)
         ? membershipPenceNum
-        : 9000;
+        : 8000;
 
       const registrationFeePenceNum = checkoutRegistrationFeePence.trim()
         ? parseInt(checkoutRegistrationFeePence.trim(), 10)
@@ -176,7 +176,7 @@ export function StaffSettingsPage() {
         registrationFeePenceNum
       )
         ? registrationFeePenceNum
-        : 1800;
+        : 1500;
       body.invoiceLegalName = invoiceLegalName.trim() || null;
       body.invoiceVatNumber = invoiceVatNumber.trim() || null;
       body.invoiceAddress = invoiceAddress.trim() || null;
@@ -409,7 +409,7 @@ export function StaffSettingsPage() {
               <input
                 value={checkoutMembershipName}
                 onChange={(e) => setCheckoutMembershipName(e.target.value)}
-                placeholder="Trader Watchdog annual portal fee + VAT"
+                placeholder="Trader Watchdog annual portal fee"
                 className="mt-1 w-full rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-white"
               />
             </div>
@@ -420,38 +420,38 @@ export function StaffSettingsPage() {
               <input
                 value={checkoutRegistrationFeeName}
                 onChange={(e) => setCheckoutRegistrationFeeName(e.target.value)}
-                placeholder="Trader Watchdog registration and admin checks + VAT"
+                placeholder="Trader Watchdog registration and admin checks"
                 className="mt-1 w-full rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-white"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-300">
-                Membership charge (gross pence, inc VAT)
+                Membership charge (pence, no VAT)
               </label>
               <input
                 value={checkoutMembershipPence}
                 onChange={(e) => setCheckoutMembershipPence(e.target.value)}
                 inputMode="numeric"
-                placeholder="9000"
+                placeholder="8000"
                 className="mt-1 w-full rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-white"
               />
               <p className="mt-1 text-xs text-slate-500">
-                Example: £75 + VAT charges as 9000 pence.
+                Example: £80 charges as 8000 pence.
               </p>
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-300">
-                Registration fee charge (gross pence, inc VAT)
+                Registration fee charge (pence, no VAT)
               </label>
               <input
                 value={checkoutRegistrationFeePence}
                 onChange={(e) => setCheckoutRegistrationFeePence(e.target.value)}
                 inputMode="numeric"
-                placeholder="1800"
+                placeholder="1500"
                 className="mt-1 w-full rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-white"
               />
               <p className="mt-1 text-xs text-slate-500">
-                Example: £15 + VAT charges as 1800 pence.
+                Example: £15 charges as 1500 pence.
               </p>
             </div>
           </div>
@@ -606,7 +606,7 @@ export function StaffSettingsPage() {
             Invoice Compliance
           </h2>
           <p className="text-xs leading-relaxed text-slate-500">
-            These values are added to the paid Stripe invoice PDF that is emailed as the VAT receipt. Stripe hosted payment receipts still use your Stripe dashboard public business details.
+            These values are added to the paid Stripe invoice PDF that is emailed as the payment receipt. Stripe hosted payment receipts still use your Stripe dashboard public business details.
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>

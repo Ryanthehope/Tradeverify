@@ -490,7 +490,7 @@ router.get("/applications/:id/xero-invoices/:kind/file", async (req, res) => {
     if (!pdf) {
       res.status(502).json({
         error:
-          "Could not fetch the Xero invoice PDF, generate a missing Xero invoice, or regenerate a Stripe VAT receipt for this payment",
+          "Could not fetch the Xero invoice PDF, generate a missing Xero invoice, or regenerate a Stripe payment receipt for this payment",
       });
       return;
     }
@@ -545,7 +545,7 @@ router.get("/members/:id/xero-invoice/file", async (req, res) => {
     if (!pdf) {
       res.status(502).json({
         error:
-          "Could not fetch the Xero invoice PDF, generate a missing renewal invoice in Xero, or regenerate a Stripe VAT receipt",
+          "Could not fetch the Xero invoice PDF, generate a missing renewal invoice in Xero, or regenerate a Stripe payment receipt",
       });
       return;
     }

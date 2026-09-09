@@ -729,7 +729,7 @@ export function StaffMemberForm() {
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-slate-200">Latest renewal invoice</p>
                   <p className="mt-1 text-xs text-slate-500">
-                    Download the most recent renewal invoice or VAT receipt available for this member.
+                    Download the most recent renewal invoice or payment receipt available for this member.
                   </p>
                 </div>
                 <button
@@ -1103,9 +1103,9 @@ export function StaffMemberForm() {
             {sourceApplicationId ? (
               <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-white/12 bg-ink-950/40 px-4 py-3">
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-slate-200">VAT receipt</p>
+                  <p className="text-sm font-medium text-slate-200">Payment receipt</p>
                   <p className="mt-1 text-xs text-slate-500">
-                    Re-send the Stripe/Xero VAT receipt linked to the original join application.
+                    Re-send the Stripe/Xero payment receipt linked to the original join application.
                   </p>
                 </div>
                 <button
@@ -1114,7 +1114,7 @@ export function StaffMemberForm() {
                   disabled={receiptBusy}
                   className="rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-1.5 text-xs font-medium text-amber-100 transition hover:bg-amber-400/15 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {receiptBusy ? "Sending…" : "Re-send VAT receipt"}
+                  {receiptBusy ? "Sending…" : "Re-send payment receipt"}
                 </button>
               </div>
             ) : null}

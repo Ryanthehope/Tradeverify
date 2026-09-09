@@ -915,9 +915,9 @@ export function Join() {
   };
 
   const registrationFeePriceLabel =
-    formatPriceLabel(registrationFeePricePence) ?? "£18";
+    formatPriceLabel(registrationFeePricePence) ?? "£15";
   const membershipPriceLabel =
-    formatPriceLabel(baseMembershipPricePence ?? membershipPricePence) ?? "£90";
+    formatPriceLabel(baseMembershipPricePence ?? membershipPricePence) ?? "£80";
   const checkoutRegistrationFeePriceLabel =
     discountApplied && discountQuote
       ? formatPriceLabel(discountQuote.registrationFinalPricePence) ??

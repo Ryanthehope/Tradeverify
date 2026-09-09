@@ -10,7 +10,7 @@ import { orgBrandingFilePath } from "./orgBrandingPaths.js";
 export type StripeInvoicePayload = {
   stripeCustomerId: string;
   description: string;
-  /** Gross amount in pence including 20% VAT. */
+  /** Amount in pence; these Trader Watchdog charges are outside VAT. */
   amountPence: number;
   /** Stripe Checkout Session ID or PaymentIntent ID — shown as payment reference. */
   reference: string;
@@ -115,8 +115,6 @@ async function createCustomReceiptPdf(
   payload: StripeInvoicePayload
 ): Promise<Buffer> {
   const invoiceNumber = await ensureIssuedInvoiceNumber(payload.reference);
-  const vatPence = Math.round(payload.amountPence / 6);
-  const netPence = payload.amountPence - vatPence;
   const paidAtDisplay = payload.paidAt.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
@@ -205,10 +203,8 @@ async function createCustomReceiptPdf(
     ["Invoice number", invoiceNumber],
     ["Date of issue", paidAtDisplay],
     ["Date of supply", paidAtDisplay],
-    ["VAT applied", "20%"],
-    ["Total incl. VAT", `£${(payload.amountPence / 100).toFixed(2)}`],
-    ["Net (ex. VAT)", `£${(netPence / 100).toFixed(2)}`],
-    ["VAT at 20%", `£${(vatPence / 100).toFixed(2)}`],
+    ["VAT", "Not charged"],
+    ["Total", `£${(payload.amountPence / 100).toFixed(2)}`],
   ];
   for (const [label, value] of infoItems) {
     page.drawText(label, {

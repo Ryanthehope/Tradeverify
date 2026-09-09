@@ -37,8 +37,8 @@ describe("resolveCheckoutDiscountCode", () => {
     const validateDiscountCode = vi.fn().mockResolvedValue({
       code: "SAVE25",
       quote: {
-        registrationFinalPricePence: 1800,
-        membershipFinalPricePence: 9000,
+        registrationFinalPricePence: 1500,
+        membershipFinalPricePence: 8000,
       },
     });
 
@@ -56,8 +56,8 @@ describe("resolveCheckoutDiscountCode", () => {
       validatedDiscount: {
         code: "SAVE25",
         quote: {
-          registrationFinalPricePence: 1800,
-          membershipFinalPricePence: 9000,
+          registrationFinalPricePence: 1500,
+          membershipFinalPricePence: 8000,
         },
       },
       invalid: false,

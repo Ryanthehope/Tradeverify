@@ -2,8 +2,8 @@ import { prisma } from "../db.js";
 import { getLaunchWindow } from "./launchWindow.js";
 const MIN_CHECKOUT_PENCE = 100; // £1.00 minimum checkout amount
 const MAX_CHECKOUT_PENCE = 999_999_99;
-const DEFAULT_ANNUAL_MEMBERSHIP_PENCE = 9_000;
-const DEFAULT_REGISTRATION_FEE_PENCE = 1_800;
+const DEFAULT_ANNUAL_MEMBERSHIP_PENCE = 8_000;
+const DEFAULT_REGISTRATION_FEE_PENCE = 1_500;
 
 function removeVatSuffix(label: string) {
   return label.replace(/\s*\+\s*VAT\b/gi, "").trim();
@@ -12,8 +12,15 @@ function removeVatSuffix(label: string) {
 function defaultAnnualMembershipPence(value: number) {
   const normalized = clampCheckoutPence(value);
   // Migrate old default DB values to the new default price
-  if (normalized === 1_500 || normalized === 7_200) return DEFAULT_ANNUAL_MEMBERSHIP_PENCE;
+  if (normalized === 1_500 || normalized === 7_200 || normalized === 9_000) {
+    return DEFAULT_ANNUAL_MEMBERSHIP_PENCE;
+  }
   return normalized;
+}
+
+function defaultRegistrationFeePence(value: number) {
+  const normalized = clampCheckoutPence(value);
+  return normalized === 1_800 ? DEFAULT_REGISTRATION_FEE_PENCE : normalized;
 }
 
 export async function getOrgBilling() {
@@ -54,7 +61,7 @@ export function checkoutLineConfig(s: BillingRow) {
   );
   return {
     membershipPence: baseMembershipPence,
-    registrationFeePence: clampCheckoutPence(
+    registrationFeePence: defaultRegistrationFeePence(
       s.checkoutRegistrationFeePence ?? DEFAULT_REGISTRATION_FEE_PENCE
     ),
     membershipName: removeVatSuffix(

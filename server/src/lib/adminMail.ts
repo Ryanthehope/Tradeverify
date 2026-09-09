@@ -661,7 +661,7 @@ export async function sendXeroInvoiceToTrader(
   const text = [
     `Dear ${opts.traderName},`,
     "",
-    `Thank you for your payment. Please find your VAT receipt attached for: ${opts.invoiceDescription}.`,
+    `Thank you for your payment. Please find your payment receipt attached for: ${opts.invoiceDescription}.`,
     "",
     "Please keep this for your records.",
     "",
@@ -670,7 +670,7 @@ export async function sendXeroInvoiceToTrader(
 
   await sendApplicantEmail(prisma, {
     to: opts.email,
-    subject: `Your VAT Receipt — ${opts.invoiceDescription}`,
+    subject: `Your Payment Receipt — ${opts.invoiceDescription}`,
     text,
     attachments: [{
       filename: "receipt.pdf",
